@@ -93,6 +93,7 @@ typedef volatile struct alignas(4) fs_ai_api_vcu2ai_struct {
 	volatile uint16_t							VCU2AI_FR_PULSE_COUNT;
 	volatile uint16_t							VCU2AI_RL_PULSE_COUNT;
 	volatile uint16_t							VCU2AI_RR_PULSE_COUNT;
+	volatile int16_t 							VCU2AI_REAR_AXLE_TORQUE;
 } fs_ai_api_vcu2ai;
 #else
 typedef volatile struct fs_ai_api_vcu2ai_struct {
@@ -111,6 +112,7 @@ typedef volatile struct fs_ai_api_vcu2ai_struct {
 	volatile _Alignas(4) uint16_t							VCU2AI_FR_PULSE_COUNT;
 	volatile _Alignas(4) uint16_t							VCU2AI_RL_PULSE_COUNT;
 	volatile _Alignas(4) uint16_t							VCU2AI_RR_PULSE_COUNT;
+	volatile _Alignas(4) int16_t							VCU2AI_REAR_AXLE_TORQUE;
 } fs_ai_api_vcu2ai;
 #endif
 

@@ -177,6 +177,7 @@ static volatile uint16_t AI2VCU_FRONT_MOTOR_SPEED_MAX_rpm = 0;
 // AI2VCU_Drive_R
 static volatile uint16_t AI2VCU_REAR_AXLE_TRQ_REQUEST_raw = 0;
 static volatile uint16_t AI2VCU_REAR_MOTOR_SPEED_MAX_rpm = 0;
+static volatile int16_t VCU2AI_REAR_AXLE_TORQUE = 0;
 
 // AI2VCU_Steer
 static volatile int16_t AI2VCU_STEER_REQUEST_raw = 0;
@@ -616,6 +617,7 @@ void fs_ai_api_vcu2ai_get_data(fs_ai_api_vcu2ai *data) {
 	if(VCU2AI_Drive_R_fresh) {
 		VCU2AI_Drive_R_fresh = FALSE;
 		VCU2AI_REAR_AXLE_TORQUE_MAX_raw	= ((uint16_t)(VCU2AI_Drive_R.data[4] + (VCU2AI_Drive_R.data[5] << 8)));
+		VCU2AI_REAR_AXLE_TORQUE = ((uint16_t)(VCU2AI_Drive_R.data[0] + (VCU2AI_Drive_R.data[1] << 8)));
 		// remaining fields not relevant to API
 	}
 
@@ -695,6 +697,7 @@ void fs_ai_api_vcu2ai_get_data(fs_ai_api_vcu2ai *data) {
 	data->VCU2AI_FR_PULSE_COUNT = VCU2AI_FR_PULSE_COUNT;
 	data->VCU2AI_RL_PULSE_COUNT = VCU2AI_RL_PULSE_COUNT;
 	data->VCU2AI_RR_PULSE_COUNT = VCU2AI_RR_PULSE_COUNT;
+	data->VCU2AI_REAR_AXLE_TORQUE = VCU2AI_REAR_AXLE_TORQUE;
 }
 
 
